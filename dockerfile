@@ -3,7 +3,7 @@
 FROM alpine:3.17
 
 RUN apk update && apk add \
-    samba-client
+samba-client
 
 COPY entrypoint.sh /entrypoint.sh
 
