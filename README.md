@@ -1,3 +1,5 @@
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/salesforce/dockerfile-image-update?label=Docker%20version&sort=semver)](https://hub.docker.com/r/salesforce/dockerfile-image-update/tags)
+
 # k8s-cronjob-smb-export
 A Docker image that can run as a Kubernetes cronJob to export an archive backup file from a ReadyWriteMany PVC.
 
