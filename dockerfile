@@ -10,4 +10,4 @@ WORKDIR /
 
 RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["/entrypoing.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
