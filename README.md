@@ -1,4 +1,4 @@
-# k8s-cronJob-smb-export
+# k8s-cronjob-smb-export
 A Docker image that can run as a Kubernetes cronJob to export an archive backup file from a ReadyWriteMany PVC.
 
 Expects a single directory containing the archives, which will be used to export the most recent.
