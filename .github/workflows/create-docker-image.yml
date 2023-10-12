@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - 'main'
+    paths-ignore:
+      - '**/README.md'
 
 jobs:
   build:
@@ -20,4 +22,3 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
-
