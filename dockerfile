@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 FROM alpine:3
 
 RUN apk update && apk add \
