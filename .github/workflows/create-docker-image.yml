@@ -6,9 +6,8 @@ on:
     branches:
       - 'main'
   pull_request:
-    branhces:
+    branches:
       - 'main'
-      - 'releases/**'
 
 jobs:
   build:
