@@ -34,6 +34,6 @@ jobs:
             linux/ppc64le,
             linux/s390x
           push: true
-          tags: ${{ github.actor }}/${{ github.repository.name }}:latest
+          tags: ${{ github.actor }}/${{ github.event.repository.name }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=min
