@@ -8,14 +8,16 @@ Expects a single directory containing the archives, which will be used to export
 https://hub.docker.com/r/emerconnelly/k8s-cronjob-smb-export
 
 ### Environment Variables
-- `SMB_USER_NAME=` <exampleUsername>
-- `SMB_USER_DOMAIN=` <domain.com>
-- `SMB_USER_PASSWORD=` <examplePassword>
-- `SMB_SERVICE_NAME=` <//fileShare/aRootFolder>
+- `SMB_USER_NAME=`
+- `SMB_USER_DOMAIN=`
+- `SMB_USER_PASSWORD=`
+- `SMB_SERVICE_NAME=`
   - doesn't end with `/`
-- `SMB_DIRECTORY=` <folder/anotherFolder>
+  - eg: `//fileShareName/rootFolder`
+- `SMB_DIRECTORY=`
   - doesn't start or end with `/`
-- `ARCHIVE_FILE_DIRECTORY=` </folder/anotherFolder>
+  - eg: `folder/anotherFolder/etcFolder`
+- `ARCHIVE_FILE_DIRECTORY=`
   - does start but doesn't end with `/`
-
-https://img.shields.io/badge/-Docker-000000?style=flat&logo=Docker&logoColor=2496ED
+  - this is the directory within the PVC
+  - eg: `/folder/anotherFolder/etcFolder`
