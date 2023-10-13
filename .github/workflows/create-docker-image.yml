@@ -4,10 +4,12 @@ name: Create Docker image
 on:
   push:
     branches:
-      - 'main'
-    paths:
-      - 'app/**'
-      - '.github/**'
+      - '**'
+    tags:
+      - 'v*.*.*'
+  pull_request:
+    branches:
+      - "main"
 
 jobs:
   build:
