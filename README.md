@@ -1,6 +1,6 @@
 <div align="center">
 
-  [![License](https://img.shields.io/badge/license-AGPL--3.0-brightgreen)](/LICENSE)
+  [![License](https://img.shields.io/badge/license-AGPL--3.0-A42E2B)](/LICENSE)
   [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/emerconnelly/k8s-cronjob-smb-export?label=Docker%20version&sort=semver)](https://hub.docker.com/r/emerconnelly/k8s-cronjob-smb-export/tags)
   
   # k8s-cronjob-smb-export
