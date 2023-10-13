@@ -8,6 +8,7 @@ on:
       - src/**
       - .github/workflows/docker-image.yml
   pull_request:
+    types: [opened, reopened]
     branches: [main]
   release:
     types: [published]
