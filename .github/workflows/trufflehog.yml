@@ -2,9 +2,7 @@ name: TruffleHog Secrets Scan
 
 on:
   push:
-    branches:
-      - '**'
-      - '!main'
+    branches-ignore: [main]
   pull_request:
     branches: [main]
 
