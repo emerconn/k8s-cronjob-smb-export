@@ -5,10 +5,6 @@
   Docker image for a K8s cronJob to export an archive backup file from a ReadyWriteMany PVC.
 </div>
 
-
-
----
-
 ### How To Use
 Expects a single directory containing the archives, which will be used to export the most recent.
 
