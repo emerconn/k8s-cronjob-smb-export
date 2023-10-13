@@ -33,11 +33,11 @@ jobs:
             ${{ github.repository_owner }}/${{ github.event.repository.name }}
             ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}
           tags: |
-            type=ref,event=branch
-            type=semver,pattern={{version}}
+            type=raw,value=latest,enable=${{ github.event_name == 'release' }}
+            type=semver,pattern={{major}}.{{minor}}.{{patch}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=raw,value=latest,enable=${{ github.event_name == 'release' }}
+            type=ref,event=branch,prefix=branch-
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
