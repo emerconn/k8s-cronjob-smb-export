@@ -1,10 +1,4 @@
----
-
-<p align="center">
-  <h1 align="center">k8s-cronjob-smb-export</h2>
-</p>
-
----
+<h1 align="center">k8s-cronjob-smb-export</h1>
 
 [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/emerconnelly/k8s-cronjob-smb-export?label=Docker%20version&sort=semver)](https://hub.docker.com/r/emerconnelly/k8s-cronjob-smb-export/tags)
 
