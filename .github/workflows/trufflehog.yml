@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  TruffleHog:
+  trufflehog:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
