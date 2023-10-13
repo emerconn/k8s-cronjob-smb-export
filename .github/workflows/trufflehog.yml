@@ -1,0 +1,25 @@
+name: TruffleHog Secrets Scan
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+    types: [opened, reopened]
+    branches: [main]
+
+jobs:
+  trufflehog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: TruffleHog
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --debug --only-verified
