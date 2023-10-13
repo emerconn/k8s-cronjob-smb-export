@@ -9,15 +9,14 @@ on:
      - .github/workflows/dockerhub-description.yml
 
 jobs:
-  dockerHubDescription:
+  docker-hub-description:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Modify README for Docker Hub
-        run: |
-          sed -i 's/# k8s-cronjob-smb-export/# [k8s-cronjob-smb-export](https:\/\/github.com\/emerconnelly\/k8s-cronjob-smb-export)/' README.md
+        run: sed -i 's/# k8s-cronjob-smb-export/# [k8s-cronjob-smb-export](https:\/\/github.com\/emerconnelly\/k8s-cronjob-smb-export)/' README.md
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
