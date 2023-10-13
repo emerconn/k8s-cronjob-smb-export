@@ -1,5 +1,4 @@
----
-name: Create Docker image
+name: Publish Docker Image
 
 on:
   push:
@@ -69,10 +68,3 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=min
-
-      - name: Docker Hub Description
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ github.repository_owner }}/${{ github.event.repository.name }}
