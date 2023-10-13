@@ -4,6 +4,9 @@ on:
   push:
     branches: ['**']
     tags: ['v*.*.*']
+    paths:
+      - src/**
+      - .github/workflows/docker-image.yml
   pull_request:
     branches: ['main']
 
@@ -56,7 +59,7 @@ jobs:
       - name: Build and publish Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./app
+          context: ./src
           push: ${{ github.event_name != 'pull_request' }}
           platforms: |
             linux/amd64
