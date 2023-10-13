@@ -4,9 +4,12 @@
 
 Docker image for a K8s cronJob to export an archive backup file from a ReadyWriteMany PVC.
 
+---
+
+### How To Use
 Expects a single directory containing the archives, which will be used to export the most recent.
 
-### Required Environment Variables
+#### Required Environment Variables
 - `SMB_USER_NAME=`
 - `SMB_USER_DOMAIN=`
 - `SMB_USER_PASSWORD=`
