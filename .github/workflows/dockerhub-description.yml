@@ -20,7 +20,7 @@ jobs:
           sed -i 's/# k8s-cronjob-smb-export/# [Docker Hub Description](https:\/\/github.com\/emerconnelly\/k8s-cronjob-smb-export)/' README.md
 
       - name: Docker Hub Description
-        uses: ./
+        uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
