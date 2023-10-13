@@ -9,6 +9,8 @@ on:
       - .github/workflows/docker-image.yml
   pull_request:
     branches: ['main']
+  release:
+    types: [published]
 
 jobs:
   docker-image:
