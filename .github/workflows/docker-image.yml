@@ -1,17 +1,14 @@
-name: Publish Docker Image
+name: Docker Image
 
 on:
   push:
-    branches:
-      - '**'
-    tags:
-      - 'v*.*.*'
+    branches: ['**']
+    tags: ['v*.*.*']
   pull_request:
-    branches:
-      - "main"
+    branches: ['main']
 
 jobs:
-  build:
+  docker-image:
     runs-on: ubuntu-latest
 
     permissions:
@@ -56,7 +53,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Build and publish Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./app
