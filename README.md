@@ -5,9 +5,7 @@ A Docker image that can run as a Kubernetes cronJob to export an archive backup 
 
 Expects a single directory containing the archives, which will be used to export the most recent.
 
-https://hub.docker.com/r/emerconnelly/k8s-cronjob-smb-export
-
-### Environment Variables
+### Required Environment Variables
 - `SMB_USER_NAME=`
 - `SMB_USER_DOMAIN=`
 - `SMB_USER_PASSWORD=`
