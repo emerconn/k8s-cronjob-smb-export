@@ -2,8 +2,8 @@ name: Docker Image
 
 on:
   push:
-    branches: [**]
-    tags: [v*.*.*]
+    branches: ['**']
+    tags: ['v*.*.*']
     paths:
       - src/**
       - .github/workflows/docker-image.yml
