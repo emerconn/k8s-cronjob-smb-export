@@ -1,0 +1,28 @@
+name: Update Docker Hub Description
+
+on:
+  workflow_dispatch:
+  push:
+   branches: [main]
+   paths:
+     - README.md
+     - .github/workflows/dockerhub-description.yml
+
+jobs:
+  dockerHubDescription:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      - uses: actions/checkout@v4
+
+      - name: Modify README for Docker Hub
+        run: |
+          sed -i 's/# k8s-cronjob-smb-export/# [Docker Hub Description](https:\/\/github.com\/emerconnelly\/k8s-cronjob-smb-export)/' README.md
+
+      - name: Docker Hub Description
+        uses: ./
+        with:
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{ github.repository_owner }}/${{ github.event.repository.name }}
+          short-description: ${{ github.event.repository.description }}
