@@ -17,7 +17,7 @@ jobs:
 
       - name: Modify README for Docker Hub
         run: |
-          sed -i 's/# k8s-cronjob-smb-export/# [Docker Hub Description](https:\/\/github.com\/emerconnelly\/k8s-cronjob-smb-export)/' README.md
+          sed -i 's/# k8s-cronjob-smb-export/# [k8s-cronjob-smb-export](https:\/\/github.com\/emerconnelly\/k8s-cronjob-smb-export)/' README.md
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
