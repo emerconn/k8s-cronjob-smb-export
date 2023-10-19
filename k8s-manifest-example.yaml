@@ -26,6 +26,7 @@ metadata:
   name: <populate>-archive-backup
   namespace: <populate>
 spec:
+  timeZone: 'America/Chicago'
   schedule: "@daily"
   jobTemplate:
     spec:
