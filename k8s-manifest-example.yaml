@@ -1,0 +1,50 @@
+--- # service account password
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: <populate>-archive-export-sa-pw
+  namespace: <populate>
+data:
+  SMB_USER_PASSWORD: <echo 'populate' | base64>
+--- # plain-text vars
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: <populate>
+  name: <populate>-archive-export-vars
+data:
+  SMB_USER_NAME: <populate>
+  SMB_USER_DOMAIN: <populate>
+  SMB_SERVICE_NAME: <populate>
+  SMB_DIRECTORY: <populate>
+  ARCHIVE_FILE_DIRECTORY: <populate>
+--- # cronJob
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: <populate>-archive-backup
+  namespace: <populate>
+spec:
+  schedule: "@daily"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: <populate>
+            image: emerconnelly/k8s-cronjob-smb-export:latest
+            imagePullPolicy: IfNotPresent
+            volumeMounts:
+            - name: <populate>
+              mountPath: <populate>
+            envFrom:
+            - configMapRef:
+                name: <populate>-archive-export-vars
+            - secretRef:
+                name: <populate>-archive-export-sa-pw
+          restartPolicy: OnFailure
+          volumes:
+          - name: <populate>
+            persistentVolumeClaim:
+              claimName: <populate>
