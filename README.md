@@ -65,7 +65,7 @@ spec:
         spec:
           containers:
             name: smb-export
-            image: emerconnelly/k8s-cronjob-smb-export:1.0.15
+            image: emerconnelly/k8s-cronjob-smb-export:latest
           - envFrom:
             - configMapRef:
                 name: smb-export
