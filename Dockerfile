@@ -2,7 +2,7 @@
 
 FROM alpine:3.20.2
 
-RUN apk update && apk add samba-client
+RUN apk upgrade --no-cache && apk add samba-client
 
 COPY entrypoint.sh /entrypoint.sh
 

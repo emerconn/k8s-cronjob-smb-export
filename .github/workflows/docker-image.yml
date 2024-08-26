@@ -5,13 +5,17 @@ on:
     branches: ['**']
     tags: ['v*.*.*']
     paths:
-      - src/**
+      - Dockerfile
+      - .dockerignore
+      - entrypoint.sh
       - .github/workflows/docker-image.yml
   pull_request:
     types: [opened, reopened]
     branches: [main]
     paths:
-      - src/**
+      - Dockerfile
+      - .dockerignore
+      - entrypoint.sh
       - .github/workflows/docker-image.yml
   release:
     types: [published]
@@ -66,7 +70,7 @@ jobs:
       - name: Build and publish Docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./src
+          context: .
           push: ${{ github.event_name != 'pull_request' }}
           platforms: |
             linux/amd64
