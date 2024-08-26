@@ -2,7 +2,7 @@
 
   [![License](https://img.shields.io/badge/license-AGPL--3.0-A42E2B)](/LICENSE)
   [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/emerconnelly/k8s-cronjob-smb-export?label=Docker%20version&sort=semver)](https://hub.docker.com/r/emerconnelly/k8s-cronjob-smb-export/tags)
-  [![Renovate Dashboard](https://img.shields.io/docker/v/emerconnelly/k8s-cronjob-smb-export?label=Renovate)](https://developer.mend.io/github/emerconnelly/k8s-cronjob-smb-export)
+  [![Renovate Dashboard](https://img.shields.io/badge/Renovate)](https://developer.mend.io/github/emerconnelly/k8s-cronjob-smb-export)
   
   # k8s-cronjob-smb-export
   Docker image for a K8s cronJob to export an archive backup file from a ReadyWriteMany PVC.
