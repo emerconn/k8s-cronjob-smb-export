@@ -10,6 +10,9 @@ on:
   pull_request:
     types: [opened, reopened]
     branches: [main]
+    paths:
+      - src/**
+      - .github/workflows/docker-image.yml
   release:
     types: [published]
 
