@@ -1,25 +1,24 @@
---- # service account password
-apiVersion: v1
-kind: Secret
-type: Opaque
-metadata:
-  name: <populate>-archive-export-sa-pw
-  namespace: <populate>
-data:
-  SMB_USER_PASSWORD: <echo 'populate' | base64>
---- # plain-text vars
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: <populate>-configmap
   namespace: <populate>
-  name: <populate>-archive-export-vars
 data:
   SMB_USER_NAME: <populate>
   SMB_USER_DOMAIN: <populate>
   SMB_SERVICE_NAME: <populate>
   SMB_DIRECTORY: <populate>
   ARCHIVE_FILE_DIRECTORY: <populate>
---- # cronJob
+---
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: <populate>-secret
+  namespace: <populate>
+stringData:
+  SMB_USER_PASSWORD: <populate>
+---
 apiVersion: batch/v1
 kind: CronJob
 metadata:
@@ -41,9 +40,9 @@ spec:
               mountPath: <populate>
             envFrom:
             - configMapRef:
-                name: <populate>-archive-export-vars
+                name: <populate>-configmap
             - secretRef:
-                name: <populate>-archive-export-sa-pw
+                name: <populate>-secret
           restartPolicy: OnFailure
           volumes:
           - name: <populate>
