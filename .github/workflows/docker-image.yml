@@ -69,8 +69,14 @@ jobs:
           context: ./src
           push: ${{ github.event_name != 'pull_request' }}
           platforms: |
+            linux/386
             linux/amd64
+            linux/arm/v6
+            linux/arm/v7
             linux/arm64/v8
+            linux/ppc64le
+            linux/riscv64
+            linux/s390x
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
