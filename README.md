@@ -14,7 +14,7 @@ Docker image for a K8s cronJob to export an archive backup file from a ReadyWrit
 
 Expects a single directory from which the most recent file will be used.
 
-### Required Env Vars
+### Variables
 
 - `SMB_USER_NAME=`
 - `SMB_USER_DOMAIN=`
@@ -29,3 +29,53 @@ Expects a single directory from which the most recent file will be used.
   - does start but doesn't end with `/`
   - this is the directory within the PVC
   - eg: `/folder/anotherFolder/etcFolder`
+
+### Example
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: smb-export
+data:
+  ARCHIVE_FILE_DIRECTORY: /var/out-dir-example-app/instance/server/default/data/archive
+  SMB_DIRECTORY: example-app/prod
+  SMB_SERVICE_NAME: //fileserver.domain.com/backups
+  SMB_USER_DOMAIN: .domain.com
+  SMB_USER_NAME: smb_export_sa
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: smb-export
+type: Opaque
+stringData:
+  SMB_USER_PASSWORD: p@ssword1234
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: smb-export
+spec:
+  jobTemplate:
+  schedule: '@daily'
+  timeZone: America/Chicago
+    spec:
+      template:
+        spec:
+          containers:
+            name: smb-export
+            image: emerconnelly/k8s-cronjob-smb-export:1.0.14
+          - envFrom:
+            - configMapRef:
+                name: smb-export
+            - secretRef:
+                name: smb-export
+            volumeMounts:
+            - mountPath: /var/out-dir-example-app
+              name: example-app-pvc
+          volumes:
+          - name: example-app-pvc
+            persistentVolumeClaim:
+              claimName: example-app-pvc
+```
