@@ -12,7 +12,7 @@ Docker image for a K8s cronJob to export an archive backup file from a ReadyWrit
 
 ## Usage
 
-Expects a single directory containing archives, which will export the most recent.
+Expects a single directory from which the most recent file will be used.
 
 ### Required Env Vars
 
