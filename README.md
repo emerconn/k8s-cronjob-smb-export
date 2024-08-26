@@ -57,9 +57,9 @@ kind: CronJob
 metadata:
   name: smb-export
 spec:
-  jobTemplate:
   schedule: '@daily'
   timeZone: America/Chicago
+  jobTemplate:
     spec:
       template:
         spec:
