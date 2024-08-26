@@ -6,6 +6,7 @@ on:
     tags: ['v*.*.*']
     paths:
       - Dockerfile
+      - .dockerignore
       - entrypoint.sh
       - .github/workflows/docker-image.yml
   pull_request:
@@ -13,6 +14,7 @@ on:
     branches: [main]
     paths:
       - Dockerfile
+      - .dockerignore
       - entrypoint.sh
       - .github/workflows/docker-image.yml
   release:
