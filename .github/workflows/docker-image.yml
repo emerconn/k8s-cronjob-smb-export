@@ -28,7 +28,7 @@ jobs:
     environment:
       name: docker
     outputs:
-        tag: ${{ fromJson(needs.docker-image.outputs.tags) }}
+        tags: ${{ steps.meta.outputs.tags }}
 
     steps:
       - name: Checkout
@@ -92,7 +92,7 @@ jobs:
       packages: read
     strategy:
       matrix:
-        tag: ${{ toJson(needs.docker-image.outputs.tags) }}
+        tag: ${{ fromJson(needs.docker-image.outputs.tags) }}
 
     steps:
       - name: Checkout
