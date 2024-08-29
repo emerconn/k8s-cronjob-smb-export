@@ -12,6 +12,16 @@ Docker image for a K8s cronJob to export an archive backup file from a ReadyWrit
 
 ## Usage
 
+### Image Pull
+
+The container images are hosted in both ghcr.io and Docker Hub
+
+```yaml
+docker pull ghcr.io/emerconnelly/k8s-cronjob-smb-export:latest
+# or
+docker pull emerconnelly/k8s-cronjob-smb-export
+```
+
 Expects a single directory from which the most recent file will be used.
 
 ### Variables
