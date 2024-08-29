@@ -98,7 +98,7 @@ jobs:
       packages: read
     strategy:
       matrix:
-        tag: ${{ fromJson(needs.docker-image.outputs.tags) }}
+        tag: ${{ fromJson(needs.docker-image.outputs.tags).tags }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
