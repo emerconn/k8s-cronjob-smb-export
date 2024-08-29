@@ -8,7 +8,7 @@ on:
       - Dockerfile
       - .dockerignore
       - entrypoint.sh
-      - .github/workflows/docker-image.yml
+      - .github/workflows/container-image.yml
   pull_request:
     types: [opened, reopened]
     branches: [main]
@@ -16,17 +16,17 @@ on:
       - Dockerfile
       - .dockerignore
       - entrypoint.sh
-      - .github/workflows/docker-image.yml
+      - .github/workflows/container-image.yml
   release:
     types: [published]
 
 jobs:
-  docker-image:
+  build-and-publish:
     runs-on: ubuntu-latest
     permissions:
       packages: write
     environment:
-      name: docker
+      name: image
     outputs:
         tags: ${{ steps.matrix.outputs.tags }}
 
@@ -91,14 +91,14 @@ jobs:
 
   trivy:
     runs-on: ubuntu-latest
-    needs: [docker-image]
+    needs: [build-and-publish]
     environment:
       name: trivy
     permissions:
       packages: read
     strategy:
       matrix:
-        tag: ${{ fromJson(needs.docker-image.outputs.tags) }}
+        tag: ${{ fromJson(needs.build-and-publish.outputs.tags) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
