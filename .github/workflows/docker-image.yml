@@ -92,7 +92,7 @@ jobs:
       packages: read
     strategy:
       matrix:
-        tag: ${{ needs.docker-image.outputs.tags }}
+        tag: ${{ toJson(steps.generate-tags.outputs.tags) }}
 
     steps:
       - name: Checkout
