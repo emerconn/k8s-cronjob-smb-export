@@ -28,7 +28,7 @@ jobs:
     environment:
       name: docker
     outputs:
-      tags: ${{ steps.meta.outputs.tags }}
+        tag: ${{ fromJson(needs.docker-image.outputs.tags) }}
 
     steps:
       - name: Checkout
