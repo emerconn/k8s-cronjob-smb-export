@@ -63,6 +63,12 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=ref,event=branch
+      - name: Debug - Print Metadata
+        run: |
+          echo "Generated tags:"
+          echo "${{ steps.meta.outputs.tags }}"
+          echo "Generated JSON:"
+          echo '${{ steps.meta.outputs.json }}' | jq .
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
