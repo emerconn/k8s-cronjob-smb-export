@@ -67,7 +67,7 @@ jobs:
       - name: Matrix tags
         id: matrix
         run: |
-          tags=$(echo '${{ steps.meta.outputs.json }}' | jq -c '{tags: .tags}')
+          tags=$(echo '${{ steps.meta.outputs.json }}' | jq -c 'tags')
           echo "tags=$tags" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
@@ -98,7 +98,7 @@ jobs:
       packages: read
     strategy:
       matrix:
-        tag: ${{ fromJson(needs.docker-image.outputs.tags).tags }}
+        tag: ${{ fromJson(needs.docker-image.outputs.tags) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
