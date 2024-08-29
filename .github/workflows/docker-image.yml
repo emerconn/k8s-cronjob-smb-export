@@ -27,7 +27,9 @@ jobs:
       packages: write
     environment:
       name: docker
-    
+    outputs:
+      tags: ${{ steps.meta.outputs.tags }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -61,6 +63,10 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=ref,event=branch
+      - name: Print Docker tags
+        run: |
+          echo "Generated tags:"
+          echo "${{ steps.meta.outputs.tags }}"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -87,6 +93,7 @@ jobs:
       packages: read
     environment:
       name: trivy
+    needs: [docker-image]
 
     steps:
       - name: Checkout
@@ -95,7 +102,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.24.0
         with:
-          image-ref: 'ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ github.sha }}'
+          image-ref: 'ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}@sha256:${{ github.sha }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: false
