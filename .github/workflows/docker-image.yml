@@ -28,7 +28,7 @@ jobs:
     environment:
       name: docker
     outputs:
-        tags: ${{ steps.meta.outputs.json }}
+        tags: ${{ steps.matrix.outputs.tags }}
 
     steps:
       - name: Checkout
@@ -63,12 +63,12 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=ref,event=branch
-      - name: Debug - Print Metadata
+      
+      - name: Matrix tags
+        id: matrix
         run: |
-          echo "Generated tags:"
-          echo "${{ steps.meta.outputs.tags }}"
-          echo "Generated JSON:"
-          echo '${{ steps.meta.outputs.json }}' | jq .
+          tags=$(echo '${{ steps.meta.outputs.json }}' | jq '{tags: .tags}')
+          echo "tags=$tags" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -98,7 +98,7 @@ jobs:
       packages: read
     strategy:
       matrix:
-        tag: ${{ fromJson(needs.docker-image.outputs.json).tags }}
+        tag: ${{ fromJson(needs.docker-image.outputs.tags) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
