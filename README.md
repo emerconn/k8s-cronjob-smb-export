@@ -8,7 +8,7 @@
 
 # k8s-cronjob-smb-export
 
-Docker image for a K8s cronJob to export an archive backup file from a ReadyWriteMany PVC.
+Container image for a K8s cronJob to export a file from a PVC to an SMB share.
 
 ## Usage
 
@@ -35,7 +35,7 @@ Expects a single directory from which the most recent file will be used.
 The container images are hosted in both [ghcr.io](https://github.com/emerconnelly/k8s-cronjob-smb-export/pkgs/container/k8s-cronjob-smb-export) and [Docker Hub](https://hub.docker.com/r/emerconnelly/k8s-cronjob-smb-export).
 
 ```yaml
-docker pull ghcr.io/emerconnelly/k8s-cronjob-smb-export:latest
+docker pull ghcr.io/emerconnelly/k8s-cronjob-smb-export
 # or
 docker pull emerconnelly/k8s-cronjob-smb-export
 ```
