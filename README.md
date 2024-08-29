@@ -30,9 +30,9 @@ Expects a single directory from which the most recent file will be used.
   - this is the directory within the PVC
   - eg: `/folder/anotherFolder/etcFolder`
 
-### Image Pull
+### Container Images
 
-The container images are hosted in both ghcr.io and Docker Hub.
+The container images are hosted in both [ghcr.io](https://github.com/emerconnelly/k8s-cronjob-smb-export/pkgs/container/k8s-cronjob-smb-export) and [Docker Hub](https://hub.docker.com/r/emerconnelly/k8s-cronjob-smb-export).
 
 ```yaml
 docker pull ghcr.io/emerconnelly/k8s-cronjob-smb-export:latest
