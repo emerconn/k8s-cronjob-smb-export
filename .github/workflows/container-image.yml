@@ -1,4 +1,4 @@
-name: Docker Image
+name: Container Image
 
 on:
   push:
