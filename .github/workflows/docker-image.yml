@@ -67,7 +67,7 @@ jobs:
       - name: Matrix tags
         id: matrix
         run: |
-          tags=$(echo '${{ steps.meta.outputs.json }}' | jq -c '.tags | map(select(startswith("ghcr.io")))')
+          tags=$(echo '${{ steps.meta.outputs.json }}' | jq -c '.tags | map(select(startswith("ghcr.io")) | split(":")[1])')
           echo "tags=$tags" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
@@ -106,7 +106,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.24.0
         with:
-          image-ref: ${{ matrix.tag }}
+          image-ref: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ matrix.tag }}
           format: 'table'
           exit-code: '1'
           ignore-unfixed: false
