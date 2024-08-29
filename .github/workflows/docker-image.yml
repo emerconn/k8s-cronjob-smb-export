@@ -67,7 +67,7 @@ jobs:
       - name: Matrix tags
         id: matrix
         run: |
-          tags=$(echo '${{ steps.meta.outputs.json }}' | jq -c '.tags')
+          tags=$(echo '${{ steps.meta.outputs.json }}' | jq -c '.tags | map(select(startswith("ghcr.io")))')
           echo "tags=$tags" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
