@@ -8,6 +8,10 @@ on:
      - README.md
      - .github/workflows/docker-hub-description.yml
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   docker-hub-description:
     runs-on: ubuntu-latest
