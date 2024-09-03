@@ -21,6 +21,9 @@ on:
   release:
     types: [published]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -30,9 +33,6 @@ jobs:
       name: image
     outputs:
         tags: ${{ steps.matrix.outputs.tags }}
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
 
     steps:
       - name: Checkout
