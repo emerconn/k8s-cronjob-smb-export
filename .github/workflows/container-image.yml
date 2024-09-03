@@ -1,6 +1,7 @@
 name: Container Image
 
 on:
+  workflow_dispatch:
   push:
     branches: ['**']
     tags: ['v*.*.*']
@@ -29,6 +30,9 @@ jobs:
       name: image
     outputs:
         tags: ${{ steps.matrix.outputs.tags }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
 
     steps:
       - name: Checkout
@@ -72,6 +76,8 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
+        with:
+          platforms: amd64,arm64
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
