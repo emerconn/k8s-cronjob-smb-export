@@ -1,8 +1,8 @@
 <div align="center">
 
   [![License](https://img.shields.io/badge/license-AGPL--3.0-A42E2B)](/LICENSE)
-  [![Docker](https://img.shields.io/docker/v/emerconnelly/k8s-cronjob-smb-export?label=Docker&sort=semver)](https://hub.docker.com/r/emerconnelly/k8s-cronjob-smb-export/tags)
-  [![Renovate Dashboard](https://img.shields.io/badge/Renovate-555?logo=renovate&logoColor=497b9c&labelColor=000)](https://developer.mend.io/github/emerconnelly/k8s-cronjob-smb-export)
+  [![Docker](https://img.shields.io/docker/v/emerconn/k8s-cronjob-smb-export?label=Docker&sort=semver)](https://hub.docker.com/r/emerconn/k8s-cronjob-smb-export/tags)
+  [![Renovate Dashboard](https://img.shields.io/badge/Renovate-555?logo=renovate&logoColor=497b9c&labelColor=000)](https://developer.mend.io/github/emerconn/k8s-cronjob-smb-export)
 
 </div>
 
@@ -32,12 +32,12 @@ Expects a single directory from which the most recent file will be used.
 
 ### Container Images
 
-The container images are hosted in both [ghcr.io](https://github.com/emerconnelly/k8s-cronjob-smb-export/pkgs/container/k8s-cronjob-smb-export) and [Docker Hub](https://hub.docker.com/r/emerconnelly/k8s-cronjob-smb-export).
+The container images are hosted in both [ghcr.io](https://github.com/emerconn/k8s-cronjob-smb-export/pkgs/container/k8s-cronjob-smb-export) and [Docker Hub](https://hub.docker.com/r/emerconn/k8s-cronjob-smb-export).
 
-```yaml
-docker pull ghcr.io/emerconnelly/k8s-cronjob-smb-export
+```bash
+docker pull ghcr.io/emerconn/k8s-cronjob-smb-export
 # or
-docker pull emerconnelly/k8s-cronjob-smb-export
+docker pull emerconn/k8s-cronjob-smb-export
 ```
 
 ### K8s example
@@ -75,7 +75,7 @@ spec:
         spec:
           containers:
             name: smb-export
-            image: emerconnelly/k8s-cronjob-smb-export:latest
+            image: emerconn/k8s-cronjob-smb-export:latest
           - envFrom:
             - configMapRef:
                 name: smb-export
