@@ -32,7 +32,7 @@ Expects a single directory from which the most recent file will be used.
 
 ### Container Images
 
-The container images are hosted in both [ghcr.io](https://github.com/emerconn/k8s-cronjob-smb-export/pkgs/container/k8s-cronjob-smb-export) and [Docker Hub](https://hub.docker.com/r/emerconn/k8s-cronjob-smb-export).
+Hosted on [ghcr.io](https://github.com/emerconn/k8s-cronjob-smb-export/pkgs/container/k8s-cronjob-smb-export) and [Docker Hub](https://hub.docker.com/r/emerconn/k8s-cronjob-smb-export).
 
 ```bash
 docker pull ghcr.io/emerconn/k8s-cronjob-smb-export
