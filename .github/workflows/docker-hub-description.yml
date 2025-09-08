@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Modify README for Docker Hub
         run: sed -i 's/# k8s-cronjob-smb-export/# [k8s-cronjob-smb-export](https:\/\/github.com\/emerconn\/k8s-cronjob-smb-export)/' README.md
